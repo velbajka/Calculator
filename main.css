@@ -1,0 +1,21 @@
+table{
+    border: 1px dashed black;
+} 
+
+td {
+    border: 1px solid grey;
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+button{
+    background-color: rgb(245, 245, 245);
+    border: 0,1px solid;
+    width: 100%
+}
+
+button:hover{
+    background-color: rgb(129, 129, 131);    
+}
+
+
