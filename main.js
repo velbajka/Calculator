@@ -1,55 +1,108 @@
-var liczba = ""
-function enterNumber(id){
-    button = document.getElementById(id);
-    //console.log(button.value);
+var a = ""
+var b = ""
+var res = ""
+var op = ""
+var output = ""
 
-    output = document.getElementById(100);
-    //console.log(output.value);           
-    output.value = output.value + button.value;
+function refreshOutput(character){
+    let output = document.getElementById(100);
+    output.value = output.value + character;
+}
 
-    if (id != "*"){
-        liczba = liczba + button.value;
+function refreshOutput1(){
+    let output1 = document.getElementById(101);
+    output1.value = res;
+}
+
+
+function handleDigitButton(digit){
+    refreshOutput(digit);
+
+    if (op == ""){
+        a = a + digit; 
+        res = a;       
+    }
+    else{
+        b = b + digit;
+        //liczymy 
+        calculate();
+        //pokazanie wyniki        
+        refreshOutput1();
     }
 }
 
-function multiply(){
-    console.log(liczba)
-
-    wynik = liczba;
-    liczba = "";
-    enterNumber("*");
-    rodzaj_operacji = "*" //rodzaj ostatniej operacji
-}
-
-function equals(){
-    console.log(wynik)
-    console.log(liczba)
-    
-
-    if (rodzaj_operacji == "*"){
-        wynik = parseInt(wynik) * parseInt(liczba);
-        output.value = wynik;
+//oblicz a op b
+function calculate(){
+    if (op == "*"){
+        res =  parseInt(a) * parseInt(b);
     }
-
-    liczba = wynik;
+    //TODO    
 }
+
+// *, +, /, -
+function handleOperatorButton(operator){
+    refreshOutput(operator);
+    op = operator;
+    a = res;
+    b = "";
+}
+
+
+// function enterNumber(id){
+   
+
+//     button = document.getElementById(id);
+//     //console.log(button.value);
+
+//     output = document.getElementById(100);
+//     //console.log(output.value);           
+//     output.value = output.value + button.value;
+
+//     equals();
+//     displayTotalResult();
+
+//     if (id != "*"){
+//         a = a + button.value;
+//     }
+// }
+
+// function multiply(){
+//     console.log(a)
+
+//     wynik = a;
+//     a = "";
+//     enterNumber("*");
+//     op = "*" //rodzaj ostatniej operacji
+// }
+
+// function equals(){
+//     console.log(wynik)
+//     console.log(a)    
+
+//     if (op == "*"){
+//         wynik = parseInt(wynik) * parseInt(a);
+//         output.value = wynik;
+//     }
+
+//     a = wynik;
+// }
 
 function clearAll(){
-    liczba = ""
+    a = ""
     wynik = ""
-    output.value=""
-    output1.value=""
+    output.value="" // gorny 
+    output1.value=""    //dolny
 
 }
 
 function clearLastDigit(){
-    liczba = liczba.slice(0, -1);
+    a = a.slice(0, -1);
     output.value = output.value.slice(0, -1)
 
 }
 
 function displayTotalResult(){
-    output1 = document.getElementById(101)
+    let output1 = document.getElementById(101)
     output1.value = wynik
 }
 
@@ -60,6 +113,6 @@ function clearLastNumber(){
         output.value = output.value.slice(0,-1);
         console.log(output.value)
       }
-    liczba = ""
+    a = ""
 }
 
