@@ -15,10 +15,16 @@
 
     <!-- <table border="1px" > -->
 
-    <table>   
+    <table>  
         <tr>
             <td colspan="4">   
                 <input id="100" type="text" value = "">  
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="4">   
+                <input id="101" type="text" value = "">  
             </td>
         </tr>
 
@@ -28,15 +34,15 @@
                 <button id="11" onclick="enterNumber(11)" type="button" value="%" > % </button> 
             </td>
             <td>
-                <button id="12" onclick="enterNumber(12)" type="button" value="xxx" > CE </button> 
+                <button id="12" onclick="clearLastNumber()" type="button" value="xxx" > CE </button> 
             </td>
 
             <td>
-                <button id="13" onclick="enterNumber(13)" type="button" value="xxx" > C </button> 
+                <button id="13" onclick="clearAll()" type="button" value="xxx" > C </button> 
             </td>
 
             <td> 
-                <button id="14" onclick="enterNumber(14)" type="button" value="xxx" > <= </button> 
+                <button id="14" onclick="clearLastDigit()" type="button" value="xxx" > <= </button> 
             </td>
         </tr>
         <tr>
@@ -106,7 +112,7 @@
                 <button id="10" onclick="enterNumber(10)" type="button" value="." > . </button> 
             </td>
             <td>
-                <button id="99" onclick="equals()" type="button" value="=" > = </button> 
+                <button id="99" onclick="equals(), displayTotalResult()" type="button" value="=" > = </button> 
             </td>
         </tr>
 

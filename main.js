@@ -23,7 +23,6 @@ function multiply(){
 
 function equals(){
     console.log(wynik)
-    
     console.log(liczba)
     
 
@@ -32,5 +31,35 @@ function equals(){
         output.value = wynik;
     }
 
-    liczba = "";
+    liczba = wynik;
 }
+
+function clearAll(){
+    liczba = ""
+    wynik = ""
+    output.value=""
+    output1.value=""
+
+}
+
+function clearLastDigit(){
+    liczba = liczba.slice(0, -1);
+    output.value = output.value.slice(0, -1)
+
+}
+
+function displayTotalResult(){
+    output1 = document.getElementById(101)
+    output1.value = wynik
+}
+
+
+function clearLastNumber(){
+    console.log(output.value.slice(-1)); 
+    while (output.value.slice(-1) != '*') {
+        output.value = output.value.slice(0,-1);
+        console.log(output.value)
+      }
+    liczba = ""
+}
+
