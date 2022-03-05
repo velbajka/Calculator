@@ -164,8 +164,8 @@ function displayTotalResult(){
     let output = document.getElementById(100);
     output1.value = res;
     output.value = res;
-    console.log(output.value)
-    console.log(output1.value)
+    // console.log(output.value)
+    // console.log(output1.value)
     a = res;
     b = "";
     op = "";
@@ -190,18 +190,27 @@ function clearLastNumber(){
     else{
         if (b.length != 0){
             let len = b.length;
-            console.log(len)
+            // console.log("b rozne od zera")
+            // console.log(len)
+            // console.log(op)
             b = "";
             res = a;
             refreshOutput1();
             output.value = output.value.slice(0,-len);   
         }
         else{
-            op == "";
+            // console.log("b rowne zero")
+            // console.log(len)
+            // console.log(op)
+            op = "X";
             output.value = output.value.slice(0,-1);
 
         }    
     }
+}
+
+function handleDotButton(operator){
+
 }
 
 
