@@ -1,5 +1,5 @@
 table{
-    border: 1px dashed black;
+    border: 2px dashed green;
 } 
 
 td {
@@ -17,5 +17,4 @@ button{
 button:hover{
     background-color: rgb(153, 149, 149);    
 }
-
 
