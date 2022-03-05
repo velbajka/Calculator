@@ -56,7 +56,7 @@
                 <button id="17" onclick="enterNumber(17)" type="button" value="xxx" > ²√x </button> 
             </td>
             <td>
-                <button id="18" onclick="enterNumber(18)" type="button" value="÷" > ÷ </button> 
+                <button id="18" onclick="handleOperatorButton('÷')" type="button" value="÷" > ÷ </button> 
             </td>
         </tr>
         <tr>
@@ -67,7 +67,7 @@
                 <button id="8" onclick="handleDigitButton(8)" type="button" value="8" > 8 </button> 
             </td>
             <td>
-                <button id="9" onclick="enterNumber(9)" type="button" value="9" > 9 </button> 
+                <button id="9" onclick="handleDigitButton(9)" type="button" value="9" > 9 </button> 
             </td>
             <td>
                 <button id="*" onclick="handleOperatorButton('*')" type="button" value="*" > * </button> 
@@ -75,30 +75,30 @@
         </tr>
         <tr>
             <td>
-                <button id="4" onclick="enterNumber(4)" type="button" value="4" > 4 </button> 
+                <button id="4" onclick="handleDigitButton(4)" type="button" value="4" > 4 </button> 
             </td>
             <td>
-                <button id="5" onclick="enterNumber(5)" type="button" value="5" > 5 </button> 
+                <button id="5" onclick="handleDigitButton(5)" type="button" value="5" > 5 </button> 
             </td>
             <td>
-                <button id="6" onclick="enterNumber(6)" type="button" value="6" > 6 </button> 
+                <button id="6" onclick="handleDigitButton(6)" type="button" value="6" > 6 </button> 
             </td>
             <td>
-                <button id="20" onclick="enterNumber(20)" type="button" value="-" > - </button> 
+                <button id="20" onclick="handleOperatorButton('-')" type="button" value="-" > - </button> 
             </td>
         </tr>
         <tr>
             <td>
-                <button id="1" onclick="enterNumber(1)" type="button" value="1" > 1 </button> 
+                <button id="1" onclick="handleDigitButton(1)" type="button" value="1" > 1 </button> 
             </td>
             <td>
-                <button id="2" onclick="enterNumber(2)" type="button" value="2" > 2 </button> 
+                <button id="2" onclick="handleDigitButton(2)" type="button" value="2" > 2 </button> 
             </td>
             <td>
-                <button id="3" onclick="enterNumber(3)" type="button" value="3" > 3 </button> 
+                <button id="3" onclick="handleDigitButton(3)" type="button" value="3" > 3 </button> 
             </td>
             <td>
-                <button id="21" onclick="enterNumber(21)" type="button" value="+" > + </button> 
+                <button id="21" onclick="handleOperatorButton('+')" type="button" value="+" > + </button> 
             </td>
         </tr>
         <tr>
@@ -106,13 +106,13 @@
                 <button id="22" onclick="enterNumber(22)" type="button" value="xxx" > +/- </button> 
             </td>
             <td>
-                <button id="0" onclick="enterNumber(0)" type="button" value="0" > 0 </button> 
+                <button id="0" onclick="handleDigitButton(0)" type="button" value="0" > 0 </button> 
             </td>
             <td>
                 <button id="10" onclick="enterNumber(10)" type="button" value="." > . </button> 
             </td>
             <td>
-                <button id="99" onclick="equals(), displayTotalResult()" type="button" value="=" > = </button> 
+                <button id="99" onclick="displayTotalResult(), displayTotalResult()" type="button" value="=" > = </button> 
             </td>
         </tr>
 
