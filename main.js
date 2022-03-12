@@ -29,6 +29,7 @@ function handleDigitButton(digit){
         //pokazanie wyniki        
         refreshOutput1();
     }
+    
 }
 
 //oblicz a op b
@@ -45,20 +46,36 @@ function calculate(){
     else if (op == "÷"){
         res =  parseInt(a) / parseInt(b);
     }
-     
+
+    
 }
 
 // *, +, /, -
 function handleOperatorButton(operator){
-    // console.log(a)
     if (a != ""){
-        refreshOutput(operator);
-        op = operator;
-        a = res;
-        b = "";
+        if (op != "" && b == ""){
+            let output = document.getElementById(100);
+            output.value = output.value.slice(0,-1);
+            op = operator;
+            refreshOutput(operator);
+        }
+        else{
+            refreshOutput(operator);
+            op = operator;
+            a = res;
+            b = "";
+        }
     }
 
 }
+// if (a != ""){
+//     refreshOutput(operator);
+//     op = operator;
+//     a = res;
+//     b = "";
+// }
+
+// }
 
 
 // function handleOperatorButton(operator){
@@ -133,6 +150,8 @@ function clearLastDigit(){
         res = a;
         output.value = a;       
     }
+    else if (op =="X"){
+    }
     else{
         if (b != ""){
             b = b.slice(0, -1);
@@ -149,10 +168,11 @@ function clearLastDigit(){
             }
         }
         else{
-            op == "";
+            op = "X";
             output.value = output.value.slice(0,-1);
 
-        }      
+        }   
+        
                   
     }
 
@@ -187,21 +207,17 @@ function clearLastNumber(){
         output.value = "";   
         refreshOutput1();    
     }
+    else if (op =="X"){
+    }
     else{
         if (b.length != 0){
             let len = b.length;
-            // console.log("b rozne od zera")
-            // console.log(len)
-            // console.log(op)
             b = "";
             res = a;
             refreshOutput1();
             output.value = output.value.slice(0,-len);   
         }
         else{
-            // console.log("b rowne zero")
-            // console.log(len)
-            // console.log(op)
             op = "X";
             output.value = output.value.slice(0,-1);
 
@@ -209,8 +225,102 @@ function clearLastNumber(){
     }
 }
 
-function handleDotButton(operator){
+function handleDotButton(operator){ 
 
 }
+
+function setColor(){
+    property.style.backgroundColor = rgb(241, 147, 147);
+
+}
+
+function sqrt(character){
+    calculate();
+    a = res;
+    b = ""
+    int_a = parseInt(a);
+    res = Math.sqrt(int_a);
+    a =  res;
+    op = "√";
+
+    refreshOutput(character);
+    refreshOutput1();
+}
+
+function power(character){
+    calculate();
+    a = res;
+    b = ""
+    int_a = parseInt(a);
+    res =int_a*int_a;
+    a =  res;
+    op = "²";
+
+    refreshOutput(character);
+    refreshOutput1();
+}
+
+function percentage(character){
+    if (b == "") {
+        int_a = parseInt(a);
+        res =int_a/100;
+        a =  res;
+        op = "%";
+    }
+    else {
+        int_b = parseInt(b);
+        b_calculated = int_b/100;
+        calculate();
+        a = res;
+        b ="";
+        op = "%";
+    }
+
+    refreshOutput(character);
+    refreshOutput1();
+}
+
+function oneToX(character){
+    if (a != ""){
+        calculate();
+        a = res;
+        b = ""
+        int_a = parseInt(a);
+        if (int_a != 0){
+            res =1/int_a
+            a =  res;
+            op = "//";
+        }
+        refreshOutput(character);
+        refreshOutput1();
+    }
+}
+
+function negative(character){
+    if (a != ""){
+        if (b == "") {
+            int_a = parseInt(a);
+            res =-(int_a);
+            a =  res;
+            op = "+/-";
+        }
+        else {
+            int_b = parseInt(b);
+            b_calculated = -(int_b);
+            res = - (parseInt(res))
+            // calculate();
+            a = res;
+            b ="";
+            op = "+/-";
+
+
+        }
+    refreshOutput(character);
+    refreshOutput1();
+    }
+}
+
+
+
 
 

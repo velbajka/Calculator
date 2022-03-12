@@ -31,7 +31,7 @@
         <tr>
             <td>
                 <!-- <input id="1" onclick="enterNumber()" type="button" value="1">                     -->
-                <button id="11" onclick="enterNumber(11)" type="button" value="%" > % </button> 
+                <button id="11" onclick="percentage('%')" type="button" value="%" > % </button> 
             </td>
             <td>
                 <button id="12" onclick="clearLastNumber()" type="button" value="xxx" > CE </button> 
@@ -47,13 +47,13 @@
         </tr>
         <tr>
             <td>
-                <button id="15" onclick="enterNumber(15)" type="button" value="xxx" > 1/x </button> 
+                <button id="15" onclick="oneToX('//')" type="button" value="//" > 1/x </button> 
             </td>
             <td>
-                <button id="16" onclick="enterNumber(16)" type="button" value="xxx" > x² </button> 
+                <button id="16" onclick="power('²')" type="button" value="²" > x² </button> 
             </td>
             <td>
-                <button id="17" onclick="enterNumber(17)" type="button" value="xxx" > ²√x </button> 
+                <button id="17" onclick="sqrt('√')" type="button" value="√" > ²√x </button> 
             </td>
             <td>
                 <button id="18" onclick="handleOperatorButton('÷')" type="button" value="÷" > ÷ </button> 
@@ -75,7 +75,7 @@
         </tr>
         <tr>
             <td>
-                <button id="4" onclick="handleDigitButton(4)" type="button" value="4" > 4 </button> 
+                <button id="4" onclick="handleDigitButton(4)"  type="button" value="4" > 4 </button> 
             </td>
             <td>
                 <button id="5" onclick="handleDigitButton(5)" type="button" value="5" > 5 </button> 
@@ -103,7 +103,7 @@
         </tr>
         <tr>
             <td>
-                <button id="22" onclick="enterNumber(22)" type="button" value="xxx" > +/- </button> 
+                <button id="22" onclick="negative('+/-')" type="button" value="+/-" > +/- </button> 
             </td>
             <td>
                 <button id="0" onclick="handleDigitButton(0)" type="button" value="0" > 0 </button> 
