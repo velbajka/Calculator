@@ -35,16 +35,16 @@ function handleDigitButton(digit){
 //oblicz a op b
 function calculate(){
     if (op == "*"){
-        res =  parseInt(a) * parseInt(b);
+        res =  parseFloat(a) * parseFloat(b);
     }
     else if (op == "+"){
-        res =  parseInt(a) + parseInt(b);
+        res =  parseFloat(a) + parseFloat(b);
     }
     else if (op == "-"){
-        res =  parseInt(a) - parseInt(b);
+        res =  parseFloat(a) - parseFloat(b);
     }
     else if (op == "÷"){
-        res =  parseInt(a) / parseInt(b);
+        res =  parseFloat(a) / parseFloat(b);
     }
 
     
@@ -118,7 +118,7 @@ function handleOperatorButton(operator){
 //     console.log(a)    
 
 //     if (op == "*"){
-//         wynik = parseInt(wynik) * parseInt(a);
+//         wynik = parseFloat(wynik) * parseFloat(a);
 //         output.value = wynik;
 //     }
 
@@ -208,6 +208,7 @@ function clearLastNumber(){
         refreshOutput1();    
     }
     else if (op =="X"){
+		//nothing to do
     }
     else{
         if (b.length != 0){
@@ -238,7 +239,7 @@ function sqrt(character){
     calculate();
     a = res;
     b = ""
-    int_a = parseInt(a);
+    int_a = parseFloat(a);
     res = Math.sqrt(int_a);
     a =  res;
     op = "√";
@@ -251,7 +252,7 @@ function power(character){
     calculate();
     a = res;
     b = ""
-    int_a = parseInt(a);
+    int_a = parseFloat(a);
     res =int_a*int_a;
     a =  res;
     op = "²";
@@ -262,14 +263,14 @@ function power(character){
 
 function percentage(character){
     if (b == "") {
-        int_a = parseInt(a);
+        int_a = parseFloat(a);
         res =int_a/100;
         a =  res;
         op = "%";
     }
     else {
-        int_b = parseInt(b);
-        b_calculated = int_b/100;
+        int_b = parseFloat(b);
+        b = int_b/100;
         calculate();
         a = res;
         b ="";
@@ -285,7 +286,7 @@ function oneToX(character){
         calculate();
         a = res;
         b = ""
-        int_a = parseInt(a);
+        int_a = parseFloat(a);
         if (int_a != 0){
             res =1/int_a
             a =  res;
@@ -299,15 +300,15 @@ function oneToX(character){
 function negative(character){
     if (a != ""){
         if (b == "") {
-            int_a = parseInt(a);
+            int_a = parseFloat(a);
             res =-(int_a);
             a =  res;
             op = "+/-";
         }
         else {
-            int_b = parseInt(b);
+            int_b = parseFloat(b);
             b_calculated = -(int_b);
-            res = - (parseInt(res))
+            res = - (parseFloat(res))
             // calculate();
             a = res;
             b ="";
