@@ -3,11 +3,27 @@ var b = ""
 var res = ""
 var op = ""
 var output = ""
+var standardOperators = [ '+','-', '*', '÷' ]
+var dot = ""
+//[ '','%', '√', '²' ]
+
 
 function refreshOutput(character){
     let output = document.getElementById(100);
-    output.value = output.value + character;
+    if (op!="|"){
+        output.value = output.value + character;
+    }
+    else{
+        output.value = res;
+    }
+        
 }
+
+// function refreshOutput(character){
+//     let output = document.getElementById(100);
+//     output.value = output.value + character;
+// }
+
 
 function refreshOutput1(){
     let output1 = document.getElementById(101);
@@ -16,19 +32,98 @@ function refreshOutput1(){
 
 
 function handleDigitButton(digit){
-    refreshOutput(digit);
+    if (dot==""){
+        console.log(op)
+        console.log(digit)
+        if (op =="x" && digit =="."){
+            
+// ///////////////// co w takim przypadku - w a moze byc kropka a moze jej nie byc
+///////////// plus przypadek gdzie kropka po operatorze
+        }
+        else{
+            refreshOutput(digit);
 
-    if (op == ""){
-        a = a + digit; 
-        res = a;       
+            if (op == ""){
+                a = a + digit; 
+                res = a;  
+            
+            }
+    
+            else{
+                b = b + digit;
+                //liczymy 
+                calculate();
+                //pokazanie wyniki        
+                refreshOutput1();
+            }
+            if (digit =="."){
+                dot = "."
+            }
+
+        }
+        // refreshOutput(digit);
+
+        // if (op == ""){
+        //     a = a + digit; 
+        //     res = a;  
+        
+        // }
+
+        // else{
+        //     b = b + digit;
+        //     //liczymy 
+        //     calculate();
+        //     //pokazanie wyniki        
+        //     refreshOutput1();
+        // }
+        // if (digit =="."){
+        //     dot = "."
+        // }
+
     }
     else{
-        b = b + digit;
-        //liczymy 
-        calculate();
-        //pokazanie wyniki        
-        refreshOutput1();
+        if (digit =="."){
+
+        }
+        else{
+            refreshOutput(digit);
+            if (op == ""){
+                a = a + digit; 
+                res = a;  
+            
+            }
+            else{
+                b = b + digit;
+                //liczymy 
+                calculate();
+                //pokazanie wyniki        
+                refreshOutput1();
+            }
+
+        }
+        
     }
+
+
+
+
+// //////////////ten kod mozna zapisać jako nowa funkcje
+
+    // refreshOutput(digit);
+
+    // if (op == ""){
+    //     a = a + digit; 
+    //     res = a;  
+    
+    // }
+    // else{
+    //     b = b + digit;
+    //     //liczymy 
+    //     calculate();
+    //     //pokazanie wyniki        
+    //     refreshOutput1();
+    // }
+//////////////////////////////////////////////////////////
     
 }
 
@@ -52,13 +147,23 @@ function calculate(){
 
 // *, +, /, -
 function handleOperatorButton(operator){
+    dot = ""
     if (a != ""){
-        if (op != "" && b == ""){
-            let output = document.getElementById(100);
-            output.value = output.value.slice(0,-1);
-            op = operator;
-            refreshOutput(operator);
+        if (op !="" && b == ""){
+            if (op == '+' || op == '-' || op == '*' || op == '÷' ){
+                let output = document.getElementById(100);
+                output.value = output.value.slice(0,-1);
+                op = operator;
+                refreshOutput(operator);
+            }
+            else{
+                refreshOutput(operator);
+                op = operator;
+                a = res;
+                b = "";
+            }
         }
+        
         else{
             refreshOutput(operator);
             op = operator;
@@ -66,7 +171,6 @@ function handleOperatorButton(operator){
             b = "";
         }
     }
-
 }
 // if (a != ""){
 //     refreshOutput(operator);
@@ -130,10 +234,12 @@ function clearAll(){
     // wynik = ""
     // output.value="" // gorny 
     // output1.value=""    //dolny
+    
     a = "";
     b = "";
     res = "";
     op = ""; 
+    dot = ""
     let output = document.getElementById(100);
     output.value =''
     let output1 = "";
@@ -146,14 +252,24 @@ function clearLastDigit(){
     let output = document.getElementById(100);
     let temporary_res = res
     if (op == ""){
+        if (a.substring(a.length-1, a.length)=="."){
+            dot=""
+        }
+
         a = a.slice(0, -1); 
         res = a;
-        output.value = a;       
+        output.value = a;  
+        
+
     }
     else if (op =="X"){
     }
     else{
+        
         if (b != ""){
+            if (b.substring(b.length-1, b.length)=="."){
+                dot=""
+            }
             b = b.slice(0, -1);
             if (b!=""){
                 calculate()
@@ -200,6 +316,7 @@ function clearLastNumber(){
     //   }
     // a = ""
     let output = document.getElementById(100);
+    dot = ""
     if (op == ""){
         a = ""; 
         b = "";
@@ -236,52 +353,72 @@ function setColor(){
 }
 
 function sqrt(character){
-    calculate();
-    a = res;
-    b = ""
-    int_a = parseFloat(a);
-    res = Math.sqrt(int_a);
-    a =  res;
-    op = "√";
+    dot = ""
+    if (a == "") {
+    }
+    //nothing to do
+    else{   
+        calculate();
+        a = res;
+        b = ""
+        int_a = parseFloat(a);
+        res = Math.sqrt(int_a);
+        a =  res;
+        op = "√";
 
-    refreshOutput(character);
-    refreshOutput1();
+        refreshOutput(character);
+        refreshOutput1();
+    }
 }
 
 function power(character){
-    calculate();
-    a = res;
-    b = ""
-    int_a = parseFloat(a);
-    res =int_a*int_a;
-    a =  res;
-    op = "²";
+    dot = ""
+    if (a == "") {
+    }
+    //nothing to do
+    else{
+        calculate();
+        a = res;
+        b = ""
+        int_a = parseFloat(a);
+        res =int_a*int_a;
+        a =  res;
+        op = "²";
 
-    refreshOutput(character);
-    refreshOutput1();
+        refreshOutput(character);
+        refreshOutput1();
+    }
 }
 
 function percentage(character){
-    if (b == "") {
-        int_a = parseFloat(a);
-        res =int_a/100;
-        a =  res;
-        op = "%";
+    dot = ""
+    if (a == "") {
     }
-    else {
-        int_b = parseFloat(b);
-        b = int_b/100;
-        calculate();
-        a = res;
-        b ="";
-        op = "%";
-    }
-
+    //nothing to do
+    else{
+        if (b == "") {
+            int_a = parseFloat(a);
+            res =int_a/100;
+            a =  res;
+            op = "%";
+        }
+        else {
+            int_b = parseFloat(b);
+            b = int_b/100;
+            calculate();
+            a = res;
+            b ="";
+            op = "%";
+        }
     refreshOutput(character);
     refreshOutput1();
+    }
+
+
 }
 
 function oneToX(character){
+    dot = ""
     if (a != ""){
         calculate();
         a = res;
@@ -298,24 +435,29 @@ function oneToX(character){
 }
 
 function negative(character){
+    
     if (a != ""){
         if (b == "") {
             int_a = parseFloat(a);
             res =-(int_a);
             a =  res;
-            op = "+/-";
+            op = "|";
         }
         else {
             int_b = parseFloat(b);
-            b_calculated = -(int_b);
-            res = - (parseFloat(res))
-            // calculate();
+            // b_calculated = -(int_b);
+            // res = - (parseFloat(res))
+
+            b=-(int_b)
+            console.log(b)
+            calculate();
             a = res;
             b ="";
-            op = "+/-";
+            op = "|";
 
 
         }
+    
     refreshOutput(character);
     refreshOutput1();
     }
