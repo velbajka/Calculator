@@ -32,9 +32,10 @@ function refreshOutput1(){
 
 
 function handleDigitButton(digit){
+
+ 
     if (dot==""){
-        console.log(op)
-        console.log(digit)
+
         if (op =="x" && digit =="."){
             
 // ///////////////// co w takim przypadku - w a moze byc kropka a moze jej nie byc
@@ -126,27 +127,44 @@ function handleDigitButton(digit){
 //////////////////////////////////////////////////////////
     
 }
-
+function parseFloatDot(a){
+    if (a == "."){
+        return 0
+    }
+    else{
+        return parseFloat(a); 
+    }
+}
 //oblicz a op b
 function calculate(){
+    logAll()
     if (op == "*"){
-        res =  parseFloat(a) * parseFloat(b);
+        res =  parseFloatDot(a) * parseFloatDot(b);
     }
     else if (op == "+"){
-        res =  parseFloat(a) + parseFloat(b);
+        res =  parseFloatDot(a) + parseFloatDot(b);
     }
     else if (op == "-"){
-        res =  parseFloat(a) - parseFloat(b);
+        res =  parseFloatDot(a) - parseFloatDot(b);
     }
     else if (op == "÷"){
-        res =  parseFloat(a) / parseFloat(b);
+        res =  parseFloatDot(a) / parseFloatDot(b);
     }
-
+    console.log("new b", parseFloatDot(b))
     
+}
+function logAll(){
+    console.log("operator", op)
+    // console.log("digit", digit)
+    console.log("a", a)
+    console.log("b", b)
+    console.log("res", res)
+    console.log("dot", dot)
 }
 
 // *, +, /, -
 function handleOperatorButton(operator){
+    
     dot = ""
     if (a != ""){
         if (op !="" && b == ""){
@@ -309,6 +327,8 @@ function displayTotalResult(){
 
 
 function clearLastNumber(){
+    // po wyczyszczeniu operatora brak mozliwości modyfikacji liczby - dodanie cyfr czy kropki - to samo przy clear last digit
+
     // console.log(output.value.slice(-1)); 
     // while (output.value.slice(-1) != '*') {
     //     output.value = output.value.slice(0,-1);
@@ -397,6 +417,7 @@ function percentage(character){
     //nothing to do
     else{
         if (b == "") {
+            // co jesli a to kropka (nie dzialają operatory)
             int_a = parseFloat(a);
             res =int_a/100;
             a =  res;
