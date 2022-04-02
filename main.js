@@ -7,8 +7,15 @@ var standardOperators = [ '+','-', '*', '÷' ]
 var dot = ""
 //[ '','%', '√', '²' ]
 
+function roundNplace(a, N){	
+	pow10N = Math.pow(10, N); 
+	a = Math.round(a* pow10N)/pow10N;
+	console.log(a);
+	return a;		
+}
 
 function refreshOutput(character){
+	
     let output = document.getElementById(100);
     if (op!="|"){
         output.value = output.value + character;
@@ -137,6 +144,9 @@ function parseFloatDot(a){
 }
 //oblicz a op b
 function calculate(){
+	
+	roundNplace(2.99999999900000000123, 3);
+	
     logAll()
     if (op == "*"){
         res =  parseFloatDot(a) * parseFloatDot(b);
