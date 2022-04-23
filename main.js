@@ -40,24 +40,28 @@ function refreshOutput1(){
 
 function handleDigitButton(digit){
 
- 
+    // console.log("co sie dzieje z kropką", dot)
+    // console.log("cholerny operator", op)
     if (dot==""){
-
-        if (op =="x" && digit =="."){
-            
+        // console.log("dot jest puste")
+        if (op =="X"){
+            // console.log("tu powinno wejsc", op) 
 // ///////////////// co w takim przypadku - w a moze byc kropka a moze jej nie byc
 ///////////// plus przypadek gdzie kropka po operatorze
         }
         else{
+            // console.log("operator inny od x", op)
             refreshOutput(digit);
 
             if (op == ""){
+                // console.log("operator pusty czyli mamy a", op)
                 a = a + digit; 
                 res = a;  
             
             }
     
             else{
+                // console.log("operator nie pusty czyli mamy b", op)
                 b = b + digit;
                 //liczymy 
                 calculate();
@@ -145,9 +149,9 @@ function parseFloatDot(a){
 //oblicz a op b
 function calculate(){
 	
-	roundNplace(2.99999999900000000123, 3);
+	// roundNplace(2.99999999900000000123, 3);
 	
-    logAll()
+    // logAll()
     if (op == "*"){
         res =  parseFloatDot(a) * parseFloatDot(b);
     }
@@ -160,7 +164,7 @@ function calculate(){
     else if (op == "÷"){
         res =  parseFloatDot(a) / parseFloatDot(b);
     }
-    console.log("new b", parseFloatDot(b))
+    // console.log("new b", parseFloatDot(b))
     
 }
 function logAll(){
@@ -278,46 +282,49 @@ function clearLastDigit(){
     // a = a.slice(0, -1);
     // output.value = output.value.slice(0, -1);
     let output = document.getElementById(100);
-    let temporary_res = res
+    // let temporary_res = res
     if (op == ""){
         if (a.substring(a.length-1, a.length)=="."){
             dot=""
         }
-
         a = a.slice(0, -1); 
         res = a;
         output.value = a;  
-        
-
     }
     else if (op =="X"){
     }
     else{
         
         if (b != ""){
+            console.log("b nie jest puste")
             if (b.substring(b.length-1, b.length)=="."){
+                console.log("sprawdzenie kropki")
                 dot=""
             }
+            console.log("initial b", b)
             b = b.slice(0, -1);
+            console.log("nowe b", b)
             if (b!=""){
+                console.log("nowe b nie jest puste", b)
                 calculate()
-                refreshOutput1();
+                //refreshOutput1();
                 output.value = output.value.slice(0,-1);
+                refreshOutput1();
             }
             else{
-                res == temporary_res
+                console.log("nowe b jest puste", b)
+                res = a
                 output.value = output.value.slice(0,-1);
                 refreshOutput1()
-
             }
         }
         else{
+            console.log("initial b jest puste, czyscimy operator", b)
             op = "X";
             output.value = output.value.slice(0,-1);
-
-        }   
-        
-                  
+            refreshOutput1()
+            // res=a
+        }                     
     }
 
 }
