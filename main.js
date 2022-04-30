@@ -4,7 +4,7 @@ var res = ""
 var op = ""
 var output = ""
 var standardOperators = [ '+','-', '*', '÷' ]
-var dot = ""
+var dot = false
 //[ '','%', '√', '²' ]
 
 function roundNplace(a, N){	
@@ -42,7 +42,7 @@ function handleDigitButton(digit){
 
     // console.log("co sie dzieje z kropką", dot)
     // console.log("cholerny operator", op)
-    if (dot==""){
+    if (dot==false){
         // console.log("dot jest puste")
         if (op =="X"){
             // console.log("tu powinno wejsc", op) 
@@ -69,7 +69,7 @@ function handleDigitButton(digit){
                 refreshOutput1();
             }
             if (digit =="."){
-                dot = "."
+                dot = true
             }
 
         }
@@ -179,7 +179,7 @@ function logAll(){
 // *, +, /, -
 function handleOperatorButton(operator){
     
-    dot = ""
+    dot = false
     if (a != ""){
         if (op !="" && b == ""){
             if (op == '+' || op == '-' || op == '*' || op == '÷' ){
@@ -271,7 +271,7 @@ function clearAll(){
     b = "";
     res = "";
     op = ""; 
-    dot = ""
+    dot = false
     let output = document.getElementById(100);
     output.value =''
     let output1 = "";
@@ -285,7 +285,7 @@ function clearLastDigit(){
     // let temporary_res = res
     if (op == ""){
         if (a.substring(a.length-1, a.length)=="."){
-            dot=""
+            dot = false
         }
         a = a.slice(0, -1); 
         res = a;
@@ -299,7 +299,7 @@ function clearLastDigit(){
             console.log("b nie jest puste")
             if (b.substring(b.length-1, b.length)=="."){
                 console.log("sprawdzenie kropki")
-                dot=""
+                dot=false
             }
             console.log("initial b", b)
             b = b.slice(0, -1);
@@ -353,7 +353,7 @@ function clearLastNumber(){
     //   }
     // a = ""
     let output = document.getElementById(100);
-    dot = ""
+    dot = false
     if (op == ""){
         a = ""; 
         b = "";
@@ -390,7 +390,7 @@ function setColor(){
 }
 
 function sqrt(character){
-    dot = ""
+    dot = false
     if (a == "") {
     }
     //nothing to do
@@ -409,7 +409,7 @@ function sqrt(character){
 }
 
 function power(character){
-    dot = ""
+    dot = false
     if (a == "") {
     }
     //nothing to do
@@ -428,20 +428,23 @@ function power(character){
 }
 
 function percentage(character){
-    dot = ""
+    dot = false
     if (a == "") {
+        //nothing to do
     }
-    //nothing to do
+    
     else{
         if (b == "") {
             // co jesli a to kropka (nie dzialają operatory)
-            int_a = parseFloat(a);
+            // int_a = parseFloat(a);
+            int_a = parseFloatDot(a);
             res =int_a/100;
             a =  res;
             op = "%";
         }
         else {
-            int_b = parseFloat(b);
+            // int_b = parseFloat(b);
+            int_b = parseFloatDot(b);
             b = int_b/100;
             calculate();
             a = res;
@@ -456,7 +459,7 @@ function percentage(character){
 }
 
 function oneToX(character){
-    dot = ""
+    dot = false
     if (a != ""){
         calculate();
         a = res;
